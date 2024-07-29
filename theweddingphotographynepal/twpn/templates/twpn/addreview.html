@@ -1,0 +1,50 @@
+{% include "twpn/header.html" %}
+
+<div class="requestquote-form">
+    <form method="POST" action="{% url 'addreview' %}">
+        {% csrf_token %}
+        <div class="form-inner2">
+            <label for="vendors">Select Vendors:</label>
+            <select name="vendors" id="vendors" style="width: 940px; height: 20px;">
+                <option value='0' selected='selected'>Vendor</option>
+                {% for vendor in vendors %}
+                <!-- <p>{{vendor.vendor_name}}</p> -->
+                <option>{{vendor.vendor_name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-inner2">
+            <label for="rating">Rating:</label>
+            <select name="rating" id="rating" style="width: 998px; height: 20px;">
+                <option value='0' selected='selected'>Rating</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+        <div class="form-inner1">
+            <label for='fname'>First Name:</label>
+            <input type="text" name="fname" required>
+            <label for='lname'>Last Name:</label>
+            <input type="text" name="lname" required>
+        </div>
+        <div class="form-inner3">
+            <label for='email'>Email:</label>
+            <input type="email" name="email" required>
+            <label for='userservicedate'>&nbsp;Date of Service:&nbsp;&nbsp;</label>
+            <input type="date" name="userservicedate" required>
+        </div>
+        <div class="form-inner5">
+            <label for='info'>Your Review</label><br>
+            <input type="text" name="info"required><br><br>
+        </div>
+        <div class="request-button">
+            <input type="submit" value="Add Review">
+        </div>
+    </form>
+</div>
+
+
+{% include "twpn/footer.html" %}

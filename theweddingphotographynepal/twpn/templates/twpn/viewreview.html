@@ -1,0 +1,44 @@
+{% if user.is_authenticated %}
+{% include "twpn/dashboardheader.html" %}
+
+<div class="data">
+    {% load static %}
+    {% for vendor in vendors %}
+    {% for image in images %}
+    {% if image.vendor_id.vendor_user.id == user.id %}
+    {% if vendor.vendor_user.id == user.id %}
+    <center>
+        <div class="dashboard-image">
+            <img src="/media/{{image.image}}" alt="{{image.image_descName}}">
+        </div>
+        <div class="dashboard-name">
+            <p>{{vendor.vendor_name}}</p>
+        </div>
+        {% for review in reviews %}
+        {% if review.vendor_name == vendor.vendor_name %}
+        <div class="review-card">
+            <div class="review-info1">
+                <p>User Name: {{review.user_name}}</p>
+            </div>
+            <div class="review-info1">
+                <p>Service Date: {{review.user_serviceDate}}</p>
+                <p>Rating: {{review.rating}}</p>
+            </div>
+            <div class="review-info1">
+                <p>Review: {{review.review}}</p>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </center>
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+</div>
+
+{% else %}
+<h1>Please login here.</h1>
+<a href="{% url 'login' %}">Login</a><br>
+<a href="{% url 'TWPN Home' %}">Home</a>
+{% endif %}

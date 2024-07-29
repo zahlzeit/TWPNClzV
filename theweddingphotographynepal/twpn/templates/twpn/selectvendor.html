@@ -1,0 +1,37 @@
+{% include "twpn/header.html" %}
+
+    <div class="studios-kathmandu">
+        <p><strong>Select a vendor to compare</strong></p>
+    </div>
+    <div class="district1-card">
+        <!-- <div class="district1-card-title">
+            Vendors in Kathmandu
+        </div> -->
+        {% for vendor in vendors %}
+        {% for image in images %}
+        {% if image.vendor_id.vendor_id == vendor.vendor_id and image.vendor_id.vendor_id != vendorid%}
+        <div class="district1-card-inner">
+            <div class="district1-card-image">
+                <img src="/media/{{image.image}}" alt="{{image.image_descName}}">
+            </div>
+            <div class="district1-card-title">
+                <p>{{image.vendor_id.vendor_name}}</p>
+            </div>
+            <div class="district1-card-des">
+                <p>{{image.vendor_id.vendor_desc}}</p>
+            </div>
+            <div class="district-card-buttons">
+                <form method="POST" action="{% url 'comparetable' %}">
+                    {% csrf_token %}
+                    <input type="number" id='vendorid' name='vendorid' value={{vendorid}} readonly>
+                    <input type="number" id='vendor_id' name='vendor_id' value={{image.vendor_id.vendor_id}} readonly>
+                    <button>Compare</button>
+                </form>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+    </div>
+
+    {% include "twpn/footer.html" %}

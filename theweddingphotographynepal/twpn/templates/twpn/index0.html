@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>TWPN</title>
+    <style>
+        .col-md-3
+        {
+        display: inline-block;
+        margin-left:-4px;
+        }
+        .carousel-indicators .active {
+        background-color: blue;
+          }
+        .col-md-3 img{
+        width:100%;
+        height:auto;
+        }
+        body .carousel-indicator li{
+        background-color: blue;
+        }
+        body .carousel-indicators{
+        bottom: 0;
+        }
+        body .carousel-control-prev-icon,
+        body .carousel-control-next-icon{
+        background-color: blue;
+        }
+         body .no-padding{
+         padding-left: 0;
+         padding-right: 0;
+         }
+    </style>
+  </head>
+  <body>
+    {% load static %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="">Wedding Photographers Nepal</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Wedding Photographers</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Gallery</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Membership</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Login</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <div id="demo" class="carousel slide my-3" data-ride="carousel">
+            <ul class="carousel-indicators">
+              <li data-target="#demo" data-slide-to="0" class="active"></li>
+              <li data-target="#demo" data-slide-to="1" ></li>
+              <li data-target="#demo" data-slide-to="2" ></li>
+            </ul>
+        
+            <!--Slideshow starts here -->
+            <div class="container carousel-inner no-padding">
+        
+              <div class="carousel-item active">
+                <div class="col-xs-3 col-sm-3 col-md-3">
+                  <div class="card" style="width: 18rem;">
+                    <img src="{%static 'twpn/pic1.jpg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>
+               </div>
+        
+                <div class="col-xs-3 col-sm-3 col-md-3">
+                  <div class="card" style="width: 18rem;">
+                    <img src="{%static 'twpn/pic2.jpg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>
+                </div>
+        
+                <div class="col-xs-3 col-sm-3 col-md-3">
+                  <div class="card" style="width: 18rem;">
+                    <img src="{%static 'twpn/pic3.jpg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>
+                </div>
+        
+                <div class="col-xs-3 col-sm-3 col-md-3">
+                  <div class="card" style="width: 18rem;">
+                    <img src="{%static 'twpn/pic1.jpg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        
+        
+        
+              <div class="carousel-item">
+                <div class="col-xs-3 col-sm-3 col-md-3">
+                  <div class="card" style="width: 18rem;">
+                    <img src="{%static 'twpn/pic2.jpg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>
+                </div>
+        
+                <div class="col-xs-3 col-sm-3 col-md-3">
+                  <div class="card" style="width: 18rem;">
+                    <img src="{%static 'twpn/pic3.jpg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>
+                </div>
+        
+                <div class="col-xs-3 col-sm-3 col-md-3">
+                  <div class="card" style="width: 18rem;">
+                    <img src="{%static 'twpn/pic1.jpg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>
+                </div>
+        
+                <div class="col-xs-3 col-sm-3 col-md-3">
+                  <div class="card" style="width: 18rem;">
+                    <img src="{%static 'twpn/pic2.jpg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        
+              <div class="carousel-item">
+                <div class="col-xs-3 col-sm-3 col-md-3">
+                  <div class="card" style="width: 18rem;">
+                    <img src="{%static 'twpn/pic3.jpg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>
+               </div>
+        
+                <div class="col-xs-3 col-sm-3 col-md-3">
+                  <div class="card" style="width: 18rem;">
+                    <img src="{%static 'twpn/pic1.jpg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>
+                </div>
+        
+                <div class="col-xs-3 col-sm-3 col-md-3">
+                  <div class="card" style="width: 18rem;">
+                    <img src="{%static 'twpn/pic2.jpg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>
+                </div>
+        
+                <div class="col-xs-3 col-sm-3 col-md-3">
+                  <div class="card" style="width: 18rem;">
+                    <img src="{%static 'twpn/pic3.jpg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        
+        </div>
+
+    </div>
+
+
+    <!-- left and right controls for the slide -->
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+<div class="slider">
+  <!-- there are a number of add on modules which are demo-able by the javascript checkboxes added to this example page //-->
+  <ul class="css-slider with-responsive-images with-slide-float-hover with-selection-disabled with-reflection with-shadow with-fade-in">
+    <li class="slide" tabindex="1" id="l1">
+      <span class="slide-outer">
+        <span class="slide-inner">
+          <!-- each slide-gfx needs a unique id if you wish to use reflections, you will also need to update .with-reflection in core.css //-->
+          <span class="slide-gfx" id="s1">
+            <img src="../images/photos/a.jpg" />
+          </span>
+        </span>
+      </span>
+    </li>
+    <li class="slide" tabindex="1" id="l2">
+      <span class="slide-outer">
+        <span class="slide-inner">
+          <span class="slide-gfx" id="s2">
+            <img src="../images/photos/b.jpg" />
+          </span>
+        </span>
+      </span>
+    </li>
+    <li class="slide" tabindex="1" id="l3">
+      <span class="slide-outer">
+        <span class="slide-inner">
+          <span class="slide-gfx" id="s3">
+            <img src="../images/photos/c.jpg" />
+          </span>
+        </span>
+      </span>
+    </li>
+    <li class="slide" tabindex="1" id="l4">
+      <span class="slide-outer">
+        <span class="slide-inner">
+          <span class="slide-gfx" id="s4">
+            <img src="../images/photos/d.jpg" />
+          </span>
+        </span>
+      </span>
+    </li>
+    <li class="slide" tabindex="1" id="l5">
+      <span class="slide-outer">
+        <span class="slide-inner">
+          <span class="slide-gfx" id="s5">
+            <img src="../images/photos/e.jpg" />
+          </span>
+        </span>
+      </span>
+    </li>
+  </ul>
+  <!-- this jump nav is optional as it requires js to function 100% correctly //-->
+  <div class="jump-nav"></div>
+  <script src="slideshow/jumpdots.js"></script>
+</div>
+<!-- this include powers the javascript checkboxes, not required for the slideshow to function. //-->
+<div class="js-panel">
+  <label><input type="checkbox" onchange="updateCheckboxes()" checked="checked">&nbsp;Reflection</label>
+  <label><input type="checkbox" onchange="updateCheckboxes()">&nbsp;Shadow</label>
+  <label><input type="checkbox" onchange="updateCheckboxes()" checked="checked">&nbsp;Levitation (on hover)</label>
+  <label><input type="checkbox" onchange="updateCheckboxes()">&nbsp;Zoom (on hover)</label>
+</div>
+<style>
+.js-panel {
+  position: fixed;
+  left: 10px;
+  top: 10px;
+  z-index: 500;
+}
+.js-panel label {
+  display: block;
+}
+</style>
+<script src="slideshow/demo.js"></script>

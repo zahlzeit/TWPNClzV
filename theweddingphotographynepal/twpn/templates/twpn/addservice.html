@@ -1,0 +1,20 @@
+{% if user.is_authenticated %}
+{% include "twpn/dashboardheader.html" %}
+
+
+<div class="data">
+    <form method="POST">
+        <center>
+            <table>
+                {% csrf_token %}
+                {{form.as_table}}
+            </table>
+            <button style="font-size: 20px;">Add</button>
+        </center>
+    </form>
+</div>
+{% else %}
+<h1>Please login here.</h1>
+<a href="{% url 'login' %}">Login</a><br>
+<a href="{% url 'TWPN Home' %}">Home</a>
+{% endif %}

@@ -1,0 +1,68 @@
+{% include "twpn/header.html" %}
+
+    <div class="studios-bhaktapur">
+        <p><strong>Wedding Photographers Studios in Bhaktapur</strong></p>
+    </div>
+
+    <div class="about-studios-bhaktapur">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+
+    <div class="district1-card">
+        <div class="district1-card-title">
+            Vendors in Bhaktapur
+        </div>
+        {% for vendor in bvendors %}
+        {% for image in images %}
+        {% if image.vendor_id.vendor_id == vendor.vendor_id %}
+        <div class="district1-card-inner">
+            <div class="district1-card-image">
+                <img src="/media/{{image.image}}" alt="{{image.image_descName}}">
+            </div>
+            <div class="district1-card-title">
+                <p>{{image.vendor_id.vendor_name}}</p>
+            </div>
+            <div class="district1-card-des">
+                <p>{{image.vendor_id.vendor_desc}}</p>
+            </div>
+            <div class="district-card-buttons">
+                <form method="POST" action="{% url 'studioview' %}">
+                    {% csrf_token %}
+                    <input type="number" id='vendor_id' name='vendor_id' value={{image.vendor_id.vendor_id}} readonly>
+                    <button>Details</button>
+                </form>
+                <form method="POST" action="{% url 'requestid' %}">
+                    {% csrf_token %}
+                    <input type="number" id='vendor_id' name='vendor_id' value={{image.vendor_id.vendor_id}} readonly>
+                    <button>Request Quote</button>
+                </form>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+    </div>
+
+    <div class="more-studios">
+        <p><strong>Find More Studios</strong></p>
+    </div>
+
+    <div class="more-studios-button">
+        <a href="/kathmandu">
+            <button>Vendors in Kathmandu</button>
+        </a>
+        <a href="/lalitpur">
+            <button>Vendors in Lalitpur</button>
+        </a>
+    </div>
+
+    {% include "twpn/footer.html" %}

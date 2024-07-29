@@ -1,0 +1,190 @@
+{% include "twpn/header.html" %}
+
+{% load static %}
+    <div class="find-studios">
+        <p><strong>Find Studios</strong></p>
+    </div>
+
+    <div class="about-find-studios">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+
+    <div class="quick-select">
+        <p><strong>Quick Select</strong></p>
+    </div>
+
+    <div class="studio-image">
+        {% for image in images|slice:":20:4" %}
+        <div class="s-image">
+          <span>
+            <form method="POST" action="{% url 'studioview' %}">
+              {% csrf_token %}
+              <input type="number" id='vendor_id' name='vendor_id' value={{image.vendor_id.vendor_id}} readonly>
+              <button><img src="/media/{{image.image}}" alt="{{image.image_descName}}"></button>
+          </form>
+          </span>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="select-district">
+        <p><strong>Select a Location</strong></p>
+    </div>
+
+    <div class="card-carousel-container">
+        <input type="radio" name="dot" id="one">
+        <input type="radio" name="dot" id="two">
+        <div class="card-carousel-container-title">
+            <p><strong>Kathmandu</strong></p>
+        </div>
+        <div class="main-card">
+            <div class="cards">
+                {% for kvendor in kvendors|slice:":8:" %}
+                {% for image in images %}
+                {% if image.vendor_id.vendor_id == kvendor.vendor_id %}
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-img">
+                            <img src="/media/{{image.image}}" alt="{{image.image_descName}}">
+                        </div>
+                        <div class="card-detail-tag">
+                            <div class="card-detail-name">
+                                {{image.vendor_id.vendor_name}}
+                            </div>
+                            <div class="card-detail-address">
+                                {{image.vendor_id.vendor_address}}
+                            </div>
+                        </div>
+                        <div class="card-detail-button">
+                            <form method="POST" action="{% url 'studioview' %}">
+                                {% csrf_token %}
+                                <input type="number" id='vendor_id' name='vendor_id' value={{image.vendor_id.vendor_id}} readonly>
+                                <button>Details</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="slider-button-detail-button">
+            <a href="/kathmandu">
+                <button>Show All Studios in Kathmandu</button>
+            </a>
+        </div>
+        <div class="slider-button">
+            <label for="one" class="one active"></label>
+            <label for="two" class="two"></label>
+        </div>
+    </div>
+
+    <div class="card-carousel-containert">
+        <input type="radio" name="dott" id="one1">
+        <input type="radio" name="dott" id="two2">
+        <div class="card-carousel-containert-title">
+            <p><strong>Lalitpur</strong></p>
+        </div>
+        <div class="main-cardt">
+            <div class="cardst">
+                {% for lvendor in lvendors|slice:":8:" %}
+                {% for image in images %}
+                {% if image.vendor_id.vendor_id == lvendor.vendor_id %}
+                <div class="cardt">
+                    <div class="cardt-content">
+                        <div class="cardt-img">
+                            <img src="/media/{{image.image}}" alt="{{image.image_descName}}">
+                        </div>
+                        <div class="cardt-detail-tag">
+                            <div class="cardt-detail-name">
+                                {{image.vendor_id.vendor_name}}
+                            </div>
+                            <div class="cardt-detail-address">
+                                {{image.vendor_id.vendor_address}}
+                            </div>
+                            <div class="cardt-detail-button">
+                                <form method="POST" action="{% url 'studioview' %}">
+                                    {% csrf_token %}
+                                    <input type="number" id='vendor_id' name='vendor_id' value={{image.vendor_id.vendor_id}} readonly>
+                                    <button>Details</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="slider-button-detail-button">
+            <a href="/lalitpur">
+                <button>Show All Studios in Lalitpur</button>
+            </a>
+        </div>
+        <div class="slider-buttont">
+            <label for="one1" class="one1 active"></label>
+            <label for="two2" class="two2"></label>
+        </div>
+    </div>
+
+    <div class="card-carousel-containertt">
+        <input type="radio" name="dott1" id="onet1">
+        <input type="radio" name="dott1" id="twot2">
+        <div class="card-carousel-containertt-title">
+            <p><strong>Bhaktapur</strong></p>
+        </div>
+        <div class="main-cardtt">
+            <div class="cardstt">
+                {% for bvendor in bvendors|slice:":8:" %}
+                {% for image in images %}
+                {% if image.vendor_id.vendor_id == bvendor.vendor_id %}
+                <div class="cardtt">
+                    <div class="cardtt-content">
+                        <div class="cardtt-img">
+                            <img src="/media/{{image.image}}" alt="{{image.image_descName}}">
+                        </div>
+                        <div class="cardtt-detail-tag">
+                            <div class="cardtt-detail-name">
+                                {{image.vendor_id.vendor_name}}
+                            </div>
+                            <div class="cardtt-detail-address">
+                                {{image.vendor_id.vendor_address}}
+                            </div>
+                            <div class="cardtt-detail-button">
+                                <form method="POST" action="{% url 'studioview' %}">
+                                    {% csrf_token %}
+                                    <input type="number" id='vendor_id' name='vendor_id' value={{image.vendor_id.vendor_id}} readonly>
+                                    <button>Details</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="slider-button-detail-button">
+            <a href="/bhaktapur">
+                <button>Show All Studios in Bhaktapur</button>
+            </a>
+        </div>
+        <div class="slider-buttontt">
+            <label for="onet1" class="onet1 active"></label>
+            <label for="twot2" class="twot2"></label>
+        </div>
+    </div>
+
+    {% include "twpn/footer.html" %}

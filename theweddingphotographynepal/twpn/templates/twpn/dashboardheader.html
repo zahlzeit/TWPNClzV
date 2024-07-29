@@ -1,0 +1,58 @@
+{% if user.is_authenticated %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <link rel='stylesheet' href="{%static 'twpn/dashboardstyles.css' %}">
+    <link rel='stylesheet' href="{%static 'twpn/styles.css' %}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor - Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashheader">
+        <center>
+            <h1>Wedding Photographers Nepal</h1><br>
+            <p>Welcome. This is your Dashboard.</p>
+        </center>
+    </div>
+    <div class="sidebar">
+        <ul>
+            <li>
+                <a href="{% url 'dashboard' %}">View Profile</a>
+            </li>
+
+            <li>
+                <a href="{% url 'editprofile' user.pk %}">Edit Profile</a>
+            </li>
+            
+            <li>
+                <a href="{% url 'viewservice' %}">View Services</a>
+            </li>
+            
+            <li>
+                <a href="{% url 'viewquote' %}">View Quote Request</a>
+            </li>
+            
+            <li>
+                <a href="{% url 'addimage' %}">Add Image</a>
+            </li>
+            
+            <li>
+                <a href="{% url 'viewreview' %}">View Review</a>
+            </li>
+            
+            <li>
+                <a href="/chattwpn/">Chat</a>
+            </li>
+
+            <li>
+                <a href="{% url 'logout' %}">Logout</a>
+            </li>
+        </ul>
+    </div>
+{% endif %}

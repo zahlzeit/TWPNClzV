@@ -1,0 +1,47 @@
+{% if user.is_authenticated %}
+{% include "twpn/dashboardheader.html" %}
+
+<div class="view-services">
+    {% for service in object_list %}
+        {% if service.vendor_id.vendor_user.id == user.id %}
+        <!-- {{ service.vendor_id }}<br>
+        {{service.service_name}}<br>
+        {{service.service_price}}<br>
+        {{service.service_desc}}<br> -->
+        <div class="review-card">
+            <div class="review-info1">
+                <p>Vendor Name: {{service.vendor_id}}</p>
+            </div>
+            <div class="review-info1">
+                <p>Service Name: {{service.service_name}}</p>
+                <p>Price: {{service.service_price}}</p>
+            </div>
+            <div class="review-info1">
+                <p>About the service: {{service.service_desc}}</p>
+            </div>
+            <center>
+                <div class="sedit-button">
+                    <form method="POST" action="{% url 'editservice' service.pk %}">
+                        {% csrf_token %}
+                        <button>Edit</button>
+                    </form>
+                </div>
+            </center>
+        </div>
+        {% endif %}
+    {% endfor %}
+    <center>
+        <div class="sadd-button">
+            <form method="POST" action="{% url 'addservice' %}">
+                {% csrf_token %}
+                <button>Add Service</button>
+            </form>
+        </div>
+    </center>
+</div>
+
+{% else %}
+<h1>Please login here.</h1>
+<a href="{% url 'login' %}">Login</a><br>
+<a href="{% url 'TWPN Home' %}">Home</a>
+{% endif %}

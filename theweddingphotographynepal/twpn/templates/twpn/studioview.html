@@ -1,0 +1,79 @@
+{% include "twpn/header.html" %}
+
+{% load static %}
+{% for vendor in vendors %}
+    <div class="studio-name">
+        <p>{{vendor.vendor_name}}</p>
+    </div>
+    <div class="slider-frame">
+        <div class="slider-image">
+            <div class="img-container">
+                <img src="{%static 'twpn/pic1.jpg' %}" alt="">
+            </div>
+            <div class="img-container">
+                <img src="{%static 'twpn/pic2.jpg' %}" alt="">
+            </div>
+            <div class="img-container">
+                <img src="{%static 'twpn/pic3.jpg' %}" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div class="studio-detail">
+        <p>{{vendor.vendor_desc}}</p>
+        <div class="studio-detail-buttons">
+            <form method="POST" action="{% url 'requestid' %}">
+                {% csrf_token %}
+                <input type="number" id='vendor_id' name='vendor_id' value={{vendor.vendor_id}} readonly>
+                <button>Request Quote</button>
+            </form>
+                <a href="/addreview">
+                    <button>Add Review</button>
+                </a>
+        </div>
+        <div class="studio-compare-buttons">
+            <form method="POST" action="{% url 'selectvendor' %}">
+                {% csrf_token %}
+                <input type="number" id='vendor_id' name='vendor_id' value={{vendor.vendor_id}} readonly>
+                <button>Compare Details with Another Vendor</button>
+            </form>
+        </div>
+    </div>
+{% endfor %}
+
+<div class="district1-card">
+    <div class="district1-card-title">
+        More in the district
+    </div>
+    {% for vendor in vendors %}
+    {% for image in images %}
+    {% if image.vendor_id.vendor_district == vendor.vendor_district %}
+    <div class="district1-card-inner">
+        <div class="district1-card-image">
+            <img src="/media/{{image.image}}" alt="{{image.image_descName}}">
+        </div>
+        <div class="district1-card-title">
+            <p>{{image.vendor_id.vendor_name}}</p>
+        </div>
+        <div class="district1-card-des">
+            <p>{{image.vendor_id.vendor_desc}}</p>
+        </div>
+        <div class="district-card-buttons">
+            <form method="POST" action="{% url 'studioview' %}">
+                {% csrf_token %}
+                <input type="number" id='vendor_id' name='vendor_id' value={{image.vendor_id.vendor_id}} readonly>
+                <button>Details</button>
+            </form>
+            <form method="POST" action="{% url 'requestquote' %}">
+                {% csrf_token %}
+                <input type="number" id='vendor_id' name='vendor_id' value={{image.vendor_id.vendor_id}} readonly>
+                <button>Request Quote</button>
+            </form>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+</div>
+
+{% include "twpn/footer.html" %}

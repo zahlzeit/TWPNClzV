@@ -1,0 +1,30 @@
+{% include "twpn/header.html" %}
+
+<div class="requestquote-form">
+    <form method="POST" action="{% url 'requestquote' %}">
+        {% csrf_token %}
+        <input type="text" id='vendor_id' name='vendor_id' value={{vendor_id}}>
+        <div class="form-inner1">
+            <label for='fname'>First Name:</label>
+            <input type="text" name="fname" required>
+            <label for='lname'>Last Name:</label>
+            <input type="text" name="lname" required>
+        </div>
+        <div class="form-inner3">
+            <label for='email'>Email:</label>
+            <input type="email" name="email" required>
+            <label for='contact'>Contact Number:</label>
+            <input type="number" name="contact" required>
+        </div>
+        <div class="form-inner5">
+            <label for='info'>Specify about your preferred services</label><br>
+            <input type="text" name="info"required><br><br>
+        </div>
+        <div class="request-button">
+            <input type="submit" value="Request Quote">
+        </div>
+    </form>
+</div>
+
+
+{% include "twpn/footer.html" %}

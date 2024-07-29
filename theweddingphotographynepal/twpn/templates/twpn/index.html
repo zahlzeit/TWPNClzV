@@ -1,0 +1,153 @@
+{% include "twpn/header.html" %}
+{% csrf_token %}
+    
+    <!-- <div class="searchbar">
+      <label for="districts">District:</label>
+      <select name="district" id="district">
+        <option value='0' selected='selected'>District</option>
+        {% for vendor in vendors %}
+        <p>{{vendor.vendor_id.vendor_district}}</p>
+        <option>{{vendor.vendor_id.vendor_district}}</option>
+        {% endfor %}
+      </select>
+      <span>Or</span>
+      <label for="studio">Studio:</label>
+      <select name="studio" id="studio">
+        {% for district in districts %}
+        <option value='Studio1'>Studio 1</option>
+        {% endfor %}
+      </select>
+    </div> -->
+
+    <div class="carousel-container">
+      <button id='prevBtn'>
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button id='nextBtn'>
+        <i class="fas fa-chevron-right"></i>
+      </button>
+      <div class="carousel-slide">
+        <img src='./static/twpn/pic3.jpg' id='lastclone' alt=''>
+        <img src='./static/twpn/pic1.jpg' alt=''>
+        <img src='./static/twpn/pic2.jpg' alt=''>
+        <img src='./static/twpn/pic3.jpg' alt=''>
+        <img src='./static/twpn/pic1.jpg' id='firstclone' alt=''>
+      </div>
+    </div>
+
+    <div class="above-gallery">
+      <p><strong>Your Search for the Photographer for Your Wedding Ends Here</strong></p>
+    </div>
+
+    <div class="gallery">
+      <h2>Gallery</h2>
+    </div>
+
+    <div class="gallery-image">
+      {% for image in images|slice:":20:5" %}
+      <div class="image">
+        <span>
+          <form method="POST" action="{% url 'studioview' %}">
+            {% csrf_token %}
+            <input type="number" id='vendor_id' name='vendor_id' value={{image.vendor_id.vendor_id}} readonly>
+            <button><img src="/media/{{image.image}}" alt="{{image.image_descName}}"></button>
+          </form>
+        </span>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="below-gallery">
+      <p><strong>Find the Best Photographers in Your Town</strong></p>
+    </div>
+
+    <div class="find-photographers">
+      {% load static %}
+      <div class="div-left">
+        <div class="div-left-title">About Us</div>
+          <img src="{%static 'twpn/logo.png' %}" alt="">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+
+      <div class="div-right">
+        <div class="div-right-title">
+          Vendors To Check Out
+        </div>
+        {% for review in reviews %}
+        {% if review.rating >= 5 %}
+        <div class="card-inner">
+          <div class="card-image">
+            {% for image in images %}
+            {% if review.vendor_name == image.vendor_id.vendor_name %}
+            <img src="/media/{{image.image}}" alt="{{image.image_descName}}">
+          </div>
+          <div class="card-title">
+            <h5>{{image.vendor_id.vendor_name}}</h5>
+          </div>
+          <div class="card-des">
+            <p>{{image.vendor_id.vendor_desc}}</p>
+          </div>
+          <div class="card-des-button">
+            <form method="POST" action="{% url 'studioview' %}">
+              {% csrf_token %}
+              <input type="number" id='vendor_id' name='vendor_id' value={{image.vendor_id.vendor_id}} readonly>
+              <button>Portfolio</button>
+            </form>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <script type='text/javascript'>
+      const carouselSlide = document.querySelector('.carousel-slide');
+      const carouselImage = document.querySelectorAll('.carousel-slide img');
+    
+      const prevBtn = document.querySelector('#prevBtn');
+      const nextBtn = document.querySelector('#nextBtn');
+    
+      let counter = 1;
+      const size = carouselImage[0].clientWidth;
+      carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+    
+    
+      nextBtn.addEventListener('click', ()=>{
+        if(counter >= carouselImage.length -1) return;
+        carouselSlide.style.transition = 'transform 0.5s ease-in-out';
+        counter++;
+        carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+      });
+    
+      prevBtn.addEventListener('click', ()=>{
+        if(counter <= 0) return;
+        carouselSlide.style.transition = 'transform 0.5s ease-in-out';
+        counter--;
+        carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+      });
+
+      carouselSlide.addEventListener('transitionend', ()=>{
+        if(carouselImage[counter].id === 'lastclone'){
+          carouselSlide.style.transition = 'none';
+          counter = carouselImage.length -2;
+          carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+        }
+        if(carouselImage[counter].id === 'firstclone'){
+          carouselSlide.style.transition = 'none';
+          counter = carouselImage.length - counter;
+          carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+        }
+      });
+    </script>
+
+{% include "twpn/footer.html" %}

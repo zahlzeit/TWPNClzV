@@ -1,0 +1,28 @@
+{% include "twpn/header.html" %}
+
+{% load static %}
+
+<div class="studio-gallery">
+    <p>Best of Wedding Photographers Nepal</p>
+</div>
+
+<div class="photo-gallery">
+    <div class="photo-gallery-title">Gallery</div>
+    {% for image in images %}
+    <div class="photo-gallery-images">
+        <img src="/media/{{image.image}}" alt="{{image.image_descName}}">
+        <div class="photo-gallery-images-desc">
+            <!-- <a href="/studioview/">
+                <p>{{image.vendor_id.vendor_name}}</p>
+            </a> -->
+            <form method="POST" action="{% url 'studioview' %}">
+                {% csrf_token %}
+                <input type="number" id='vendor_id' name='vendor_id' value={{image.vendor_id.vendor_id}} readonly>
+                <button>{{image.vendor_id.vendor_name}}</button>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% include "twpn/footer.html" %}
