@@ -29,16 +29,16 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Create the mini vm's code directory
-RUN mkdir -p /theweddingphotographynepal
+RUN mkdir -p /src
 
 # Set the working directory to that same code directory
-WORKDIR /theweddingphotographynepal
+WORKDIR /src
 
 # Copy the requirements file into the container
 COPY requirements.txt /tmp/requirements.txt
 
 # copy the project code into the container's working directory
-COPY ./theweddingphotographynepal /theweddingphotographynepal
+COPY ./theweddingphotographynepal /src
 
 # Install the Python project requirements
 RUN pip install -r /tmp/requirements.txt
